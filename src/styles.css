@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.btncss{
+
+    width: 100px;
+    height: 40px;
+    margin-right: 5px;
+    margin-left: 5px;
+
+}
+
+
+.formcenter{
+
+    width: 400px;
+    height: 330px;
+    border: 1px solid #0ccc;
+    border-radius: 8px 8px 5px 5px;
+    padding: 0px;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+} 
+
+.frame-image {
+    width: 165px;
+    height: 130px;
+    border: 1px solid blue;
+}

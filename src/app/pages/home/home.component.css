@@ -1,0 +1,82 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    background-image: image("./assets/loginuser.jpg");
+}
+
+app-navbar{
+
+    position: fixed;
+    width: 100%;
+    top:0px;
+    height: 3rem;
+    z-index: 3;
+}
+
+
+app-footer{
+
+   text-align: center;
+    line-height: 1.5rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    height: 1.5rem;
+    z-index: 1;
+    color: white;
+    font-size: 14px;
+    background-color: rgba(19, 29, 124, 0.993);
+
+}
+
+main{
+    position: absolute;
+    width: 100%;
+    /* top: 4rem; */
+    z-index: 1;
+    background-image: image("./assets/loginuser.jpg");
+}
+
+app-sidenav {
+    position: fixed;
+    border: 1px solid black;
+    left: 0rem;
+    top: 3rem; 
+    /* side NavBar By default 60 width for show only icon */
+    width: 50px; 
+    height: calc(100vh - 3rem);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: rgb(52, 45, 156);
+    border-top: 1px solid white;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: 200ms;
+    z-index: 2;
+}
+.app-nav-list-open{
+
+    width: 190px;
+
+}
+
+.display-area{
+
+    position: absolute;
+    left: 60px;
+    width: calc(100% - 60px);
+    color: black;
+    transition: 250ms;
+    margin-top:2.5rem;
+    z-index: 0;
+}
+
+.display-area-shrink{
+    width: calc(100% - 190px); 
+    left: 190px;
+}
+
+.card-header{
+    background-color: rgb(48, 23, 76);
+}

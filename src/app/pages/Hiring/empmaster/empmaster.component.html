@@ -1,0 +1,348 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+
+            <div class="container-fluid g-0">
+                <div class="row">
+                    <div class="col g-0">
+
+                        <!-- Apply Accordion  -->
+                        <div class="accordion">
+                            <form [formGroup]="empForm" (ngSubmit)="EmployeeFormSubmit()">
+                                <!-- Start First Accordion  -->
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            Employee Master
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body p-2 pb-4">
+
+                                            <!-- EMPLOYEE FORM START  -->
+
+
+                                            <!-- <div formGroupName="empmaster">  -->
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="row">
+
+                                                        <!-- Employee ID -->
+                                                        <div class="row">
+                                                            <div class="col-md-4 mt-1">
+                                                                <label for="empid" class="col-form-label-sm">Employee
+                                                                    ID</label>
+                                                                <input readonly type="text"
+                                                                    class="form-control form-control-sm" id="empid"
+                                                                    formControlName="empid" placeholder="Auto Generate">
+                                                            </div>
+
+                                                            <!-- Joining Date  -->
+                                                            <div class="col-md-4 mt-1">
+                                                                <label for="jod" class="col-form-label-sm">Join
+                                                                    Date</label>
+
+                                                                <label for="jod" class="col-form-label-sm">Date Of
+                                                                    Birth</label>
+                                                                <input type="date" formControlName="jod"
+                                                                    [value]="dateformat | date:'dd-MMM-yyyy'"
+                                                                    class="form-control form-control-sm" id="jod">
+
+                                                                <div class="form-text text-danger"
+                                                                    *ngIf="JOD.errors?.['required'] && (JOD.touched|| JOD.dirty)">
+                                                                    Joining Date is required
+                                                                </div>
+
+                                                            </div>
+
+                                                            <!-- Employee Active Status -->
+                                                            <div class="col-md-4 mt-2">
+                                                                <div class="form-check mt-4 pb-0">
+                                                                    <input type="checkbox" formControlName="isactive"
+                                                                        class="form-check-input" id="isactive">
+                                                                    <label for="isactive" class="form-check-label">Is
+                                                                        Active</label>
+                                                                    <div class="form-text text-danger"
+                                                                        *ngIf="IsActive.errors?.['required'] && (IsActive.touched|| IsActive.dirty)">
+                                                                        Joining Date is required
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Employee Name -->
+                                                        <div class="row">
+                                                            <div class="col-md-8 mt-2">
+                                                                <label for="empname" class="col-form-label-sm ">Employee
+                                                                    Name</label>
+                                                                <input type="text" formControlName="empname"
+                                                                    class="form-control form-control-sm" id="empname">
+                                                                <div class="form-text text-danger"
+                                                                    *ngIf="EmpName.errors?.['required'] && (EmpName.touched|| EmpName.dirty)">
+                                                                    Emplyee Name Is Required
+                                                                </div>
+                                                                <div class="form-text text-danger"
+                                                                    *ngIf="EmpName.errors?.['pattern']  && (EmpName.touched|| EmpName.dirty)">
+                                                                    Employee cannot be start with number
+                                                                </div>
+
+                                                            </div>
+
+                                                            <!-- Employee Gender -->
+                                                            <div class="col-md-4 mt-2 p-0">
+                                                                <div class="container-fluid p-0 w-100 mx-4">
+                                                                    <div class="row w-100 ">
+                                                                        <div class="col-form-label-sm p-0">
+                                                                            <p class=" p-0" style="height: 15px;">Gender
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row w-100">
+                                                                        <div class="col px-1 mx-1 text-start">
+
+                                                                            <div
+                                                                                class="form-check form-check-inline col-form-label-sm ">
+                                                                                <input type="radio" name="rdogender"
+                                                                                    value="1" class="form-check-input"
+                                                                                    id="checkmale">
+                                                                                <label for="checkmale"
+                                                                                    class="form-check-label">Male</label>
+                                                                            </div>
+
+                                                                            <div
+                                                                                class="form-check form-check-inline col-form-label-sm ">
+                                                                                <input type="radio" name="rdogender"
+                                                                                    value="1" class="form-check-input"
+                                                                                    id="checkmale">
+                                                                                <label for="checkmale"
+                                                                                    class="form-check-label">Female</label>
+                                                                            </div>
+
+                                                                            <div
+                                                                                class="form-check form-check-inline col-form-label-sm ">
+                                                                                <input type="radio" name="rdogender"
+                                                                                    value="1" class="form-check-input"
+                                                                                    id="checkmale">
+                                                                                <label for="checkmale"
+                                                                                    class="form-check-label">Other</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Employee NIC # -->
+                                                        <div class="row">
+                                                            <div class="col-md-4  mt-2">
+                                                                <label for="nicno" class="col-form-label-sm">NIC
+                                                                    No.</label>
+                                                                <input type="text" formControlName="nicno"
+                                                                    class="form-control form-control-sm" id="nicno">
+                                                                <div class="form-text text-danger"
+                                                                    *ngIf="NICNo.errors?.['required'] && (NICNo.touched || NICNo.dirty)">
+                                                                    NIC No. must be Required
+                                                                </div>
+                                                                <div class="form-text text-danger"
+                                                                    *ngIf="NICNo.errors?.['minlength'] && (NICNo.touched || NICNo.dirty)">
+                                                                    Please insert 11 digit NIC NO. without '-'.
+                                                                </div>
+
+                                                            </div>
+
+
+                                                            <!-- Employee Date Of Birth -->
+                                                            <div class="col-md-4  mt-2">
+                                                                <label for="dob" class="col-form-label-sm">Date Of
+                                                                    Birth</label>
+                                                                <input type="date" formControlName="dob"
+                                                                    [value]="dateformat | date:'dd-MMM-yyyy'"
+                                                                    class="form-control form-control-sm" id="dob">
+                                                            </div>
+
+                                                            <!-- Confirm Date -->
+                                                            <div class="col-md-4  mt-2">
+                                                                <label for="cnfmdate" class="col-form-label-sm">Confirm
+                                                                    Date</label>
+                                                                <input type="date" formControlName="cnfmdate"
+                                                                    class="form-control form-control-sm" id="cnfmdate">
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+
+
+                                                </div>
+                                                <!-- Employee  Image Path -->
+                                                <div class="col-md-4">
+                                                    <div class="row">
+
+                                                        <div class="col mt-1">
+                                                            <div class="mb-2">
+                                                                <label for="imagepath"
+                                                                    class="col-form-label-sm">Employee
+                                                                    Image</label>
+                                                                <input class="form-control form-control-sm w-100"
+                                                                    type="file" formControlName="imagepath"
+                                                                    id="imagepath" onchange="preview()">
+
+                                                            </div>
+                                                            <div class="container-fluid g-0">
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <img id="frame" src=""
+                                                                            class="img frame-image" />
+                                                                        <button onclick="clearImage()"
+                                                                            class="btn btn-primary align-bottom mx-2 mt-2">Image
+                                                                            Delete</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col">
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End First Accordion  -->
+
+                                <!-- Start Second Accordion  Designation -->
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true"
+                                            aria-controls="headingTwo">
+                                            Employee Designation
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse">
+                                        <div class="accordion-body p-2">
+
+
+                                            <!-- Start Form Group  -->
+
+
+                                            <div formGroupName="empDesignation">
+                                                <div class="container-fluid g-0">
+                                                    <div class="row">
+
+                                                        <!-- START EMPLOYEE DESIGNATION -->
+
+
+                                                        <!-- select Employee Designation -->
+                                                        <div class="col-md-3">
+
+                                                            <label for="id" class="col-form-label-sm">Id</label>
+                                                            <input readonly type="text"
+                                                                class="form-control form-control-sm" id="id"
+                                                                formControlName="id" placeholder="Auto Generate">
+                                                        </div>
+
+
+                                                        <div class="col-md-3">
+                                                            <label for="desigid"
+                                                                class="col-form-label-sm">Designation</label>
+                                                            <select type="" formControlName="desigid"
+                                                                class="form-select form-select-sm" id="desigid">
+
+                                                                <option *ngFor="let item of allDesignation"
+                                                                    [ngValue]="item.desigid">{{item.designame}}</option>
+                                                            </select>
+
+                                                            <div class="form-text text-danger"
+                                                                *ngIf="DesigId.errors?.['required'] && (DesigId.touched || DesigId.dirty)">
+                                                                Designation Is Required.
+                                                            </div>
+
+                                                        </div>
+
+                                                        <!-- Valid From -->
+                                                        <div class="col-md-3">
+                                                            <label for="validfrom" class="col-form-label-sm">Valid
+                                                                Date</label>
+                                                            <input type="date" formControlName="validfrom"
+                                                                class="form-control form-control-sm" id="validfrom">
+
+                                                            <div class="form-text text-danger"
+                                                                *ngIf="ValidFrom.errors?.['required'] && (ValidFrom.touched || ValidFrom.dirty)">
+                                                                Valid From Is Required.
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- valid To -->
+                                                        <div class="col-md-3">
+                                                            <label for="validto" class="col-form-label-sm">Valid
+                                                                To</label>
+                                                            <input type="date" formControlName="validto"
+                                                                class="form-control form-control-sm" id="validto">
+
+                                                            <div class="form-text text-danger"
+                                                                *ngIf="ValidTo.errors?.['required'] && (ValidTo.touched || ValidTo.dirty)">
+                                                                Valid To Is Required.
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Is Active -->
+                                                        <div class="col-md-3">
+                                                            <div class="form-check mt-4">
+                                                                <input type="checkbox" class="form-check-input"
+                                                                    formControlName="isactive" id="isactive">
+                                                                <label for="isactive" class="form-check-label">Is
+                                                                    Active</label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <!-- End Second Accordion Designation -->
+
+
+                                <!-- Start Third Accordion  -->
+
+                                <!-- End Third Accordion  -->
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary btncss"> Save </button>
+                                        <button type="reset" class="btn btn-warning btncss"> Reset </button>
+                                        <button class="btn btn-info btncss" (click)="empList()"> List </button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <!-- End Accordion -->
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

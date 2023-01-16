@@ -1,0 +1,8 @@
+app-navbar{
+
+    position: fixed;
+    width: 100%;
+    top:0px;
+    height: 3rem;
+    z-index: 2;
+}

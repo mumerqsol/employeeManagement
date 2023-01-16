@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark px-2">
+
+  <!-- for Menu Icon -->
+  <div class="side-nav-button p-2 me-3 text-light" (click)="SideNavToggle()">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+  <!-- For NavBar Brand -->
+  <a href="#" class="navbar-brand px-4"> Employee Management</a>
+
+  <!-- DropDown MEnu Item -->
+  <div class="navbar-collapse pt-3">
+
+    <!-- Add User Profile dropdown -->
+    <div class="profile-logo dropstart ms-auto">
+
+      <button class="btn btn-outline-success mb-3" [ngClass]="{'login-visible':isLoggedIn}" routerLink="/login">
+        Login
+      </button>
+      <a [ngClass]="{'login-visible':!isLoggedIn}" data-bs-toggle="dropdown" role="button">
+
+
+        <img src="./assets/loginuser.jpg" class="rounded-circle" width="30px" height="30px">
+        <p class="text-white d-inline-block px-2">{{userid | uppercase}}</p>
+      </a>
+
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li class="dropdown-item" role="button"> Profile </li>
+        <li class="dropdown-item" role="button">
+          <a (click)="Logout()"> Logout </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</nav>

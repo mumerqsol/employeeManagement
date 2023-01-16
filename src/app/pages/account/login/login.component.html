@@ -1,0 +1,47 @@
+<div class="container formcenter1">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <span class="fs-3"> User Login </span>
+                </div>
+                <div class="card-body">
+
+                    <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
+
+                        <!-- Create Form label -->
+                        <div class="container p-2">
+                            <!-- User Id Field -->
+                            <div class="row">
+                                <div class="col ">
+                                    <label for="userid" class="col-form-label-sm"> User Id </label>
+                                    <input type="text" formControlName="userid" class="form-control form-control-sm"
+                                        id="userid">
+                                    <div class="form-text text-danger" *ngIf=""></div>
+                                </div>
+                            </div><br>
+
+                            <!-- Password Field -->
+
+                            <div class="row">
+                                <div class="col">
+                                    <div for="password" class="col-form-label-sm"> Password </div>
+                                    <input type="password" class="form-control form-control-sm"
+                                        formControlName="password" id="password">
+                                </div>
+                            </div><br>
+
+                            <!-- Login - User Button  -->
+
+                            <div class="row">
+                                <div class="col">
+                                    <Button type="submit" class="btn btn-primary btncss"> Login </Button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
