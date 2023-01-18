@@ -27,6 +27,8 @@ export class EmplistComponent {
 
   getEmployee(id: number) {
 
+    console.log(id);
+    
     this.router.navigateByUrl(`/home/addempmaster/${id}`);
   }
 

@@ -16,6 +16,7 @@ export class EmpmasterComponent implements OnInit {
   allDesignation: any;
   dateformat: Date = new Date();
   model: any;
+  jod:Date= new Date();
 
   constructor(private desigService: DesignationService,
     private empService: EmployeeService,
@@ -48,8 +49,6 @@ export class EmpmasterComponent implements OnInit {
 
   });
 
-
-
   ngOnInit(): void {
     // Fill Designation DropDown
     this.desigService.getAllDesignation().subscribe((data) => {
@@ -64,35 +63,44 @@ export class EmpmasterComponent implements OnInit {
     this.getEmployee();
   }
 
-
-
   getEmployee() {
+   this.activatedRouter.params.subscribe((data:any)=>{
+   this.empService.getemployee(data.id).subscribe((data:any) => {
 
-    let employeeId = JSON.parse(JSON.stringify(this.activatedRouter.snapshot.params));
-    console.log(employeeId.id);
+ 
 
-
-
-    this.empService.getemployee(employeeId.id).subscribe((data) => {
-
-      console.log("ADAT");
-      console.log(data);
-      this.empForm.patchValue(JSON.parse(JSON.stringify(data)));
-
+      this.empForm.patchValue(data);
+      this.empForm.get('jod')?.patchValue( data.jod.toString().substring(0,10));
+      this.empForm.get('dob')?.patchValue( data.dob.toString().substring(0,10));
+      this.empForm.get('cnfmdate')?.patchValue( data.cnfmdate.toString().substring(0,10));
+      
+      this.empForm.get('empDesignation.validfrom')?.patchValue( data.empDesignation.validfrom.toString().substring(0,10));
+      this.empForm.get('empDesignation.validto')?.patchValue( data.empDesignation.validto.toString().substring(0,10));
     }, (error) => {
       console.log(error);
 
     })
-
+   })
 
   }
-  resetemployee() {
-    this.empForm.patchValue(JSON.parse(JSON.stringify(this.empForm)));
+  
+  private dateFormat(date:any)
+  {
+    const dt = new Date(date);
+    let month ='' + (dt.getMonth() +1);
+    let day = '' + (dt.getDate());
+    let year = '' + (dt.getFullYear());
+    if (month.length < 2) month = '0'+ month ;
+    if (day.length < 2) day = '0'+ day ;
+
+    let formatdate = [month,day,year].join('/');
+    console.log(formatdate);
+   return formatdate;
+    
   }
   EmployeeFormSubmit() {
 
-    let empdata = JSON.parse(JSON.stringify(this.empForm.value));
-    console.log('empdata');
+    let empdata = this.empForm.value;
     console.log(empdata);
 
     this.empService.addEmployee(empdata).subscribe((data) => {
